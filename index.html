@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Wedding Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Cairo', sans-serif;
+    background: linear-gradient(to bottom, #f5eee6, #e4d5c3);
+    color: #4b3832;
+    text-align: center;
+}
+
+/* Start Screen */
+#startScreen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #4b3832;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.start-btn {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    background: #8b6f47;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.start-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Container */
+.container {
+    padding: 30px;
+    display: none;
+}
+
+/* Names */
+h1 {
+    font-family: 'Playfair Display';
+    font-size: 45px;
+    animation: slideDown 1.5s ease;
+}
+
+h2 {
+    font-size: 24px;
+    animation: fadeIn 2s ease;
+}
+
+/* Sections */
+.section {
+    margin: 30px auto;
+    padding: 25px;
+    width: 85%;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    animation: fadeUp 1.2s ease;
+}
+
+/* Button */
+button {
+    padding: 12px 25px;
+    border-radius: 25px;
+    border: none;
+    background: #8b6f47;
+    color: white;
+    cursor: pointer;
+}
+
+/* Footer */
+.footer {
+    margin: 40px;
+    font-size: 30px;
+    font-family: 'Playfair Display';
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {opacity:0;}
+    to {opacity:1;}
+}
+
+@keyframes slideDown {
+    from {opacity:0; transform: translateY(-40px);}
+    to {opacity:1; transform: translateY(0);}
+}
+
+@keyframes fadeUp {
+    from {opacity:0; transform: translateY(30px);}
+    to {opacity:1; transform: translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Start Screen -->
+<div id="startScreen">
+<button class="start-btn" onclick="startSite()">💌 Open Invitation</button>
+</div>
+
+<div class="container" id="mainContent">
+
+<h1>Alaa Mahmoud & Ahmed Rabie</h1>
+<h2>آلاء محمود & أحمد ربيع</h2>
+
+<!-- Invitation -->
+<div class="section">
+<h2>📜 Invitation</h2>
+<p>
+بكل حب وفرح 🤍<br>
+نتشرف بحضوركم لمشاركتنا أجمل يوم في حياتنا<br>
+وجودكم يسعدنا 🤍
+</p>
+</div>
+
+<!-- Dates -->
+<div class="section">
+<h2>📅 Dates</h2>
+<p>🎉 Party - 16/6</p>
+<p>💍 Henna & Katb Ketab - 17/6</p>
+<p>👰 Wedding - 19/6</p>
+</div>
+
+<!-- Journey -->
+<div class="section">
+<h2>💍 Our Journey</h2>
+<p>🎉 Party → 💍 Henna → 👰 Wedding</p>
+</div>
+
+<!-- Countdown -->
+<div class="section">
+<h2>⏳ Countdown</h2>
+<p id="countdown"></p>
+</div>
+
+<!-- Location -->
+<div class="section">
+<h2>📍 Location</h2>
+<button onclick="window.open('https://maps.app.goo.gl/qv4JGm7VCqkqLWpr5','_blank')">
+View Location
+</button>
+</div>
+
+<!-- Dress Code -->
+<div class="section">
+<h2>👗 Dress Code</h2>
+<p>Simple & Elegant 🤍</p>
+</div>
+
+<!-- Wishes -->
+<div class="section">
+<h2>💌 Send Wishes</h2>
+<button onclick="sendWhatsApp()">Send Wishes</button>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+Alaa & Ahmed ❤️
+</div>
+
+</div>
+
+<script>
+function startSite(){
+    document.getElementById("startScreen").style.display="none";
+    document.getElementById("mainContent").style.display="block";
+}
+
+/* Countdown */
+var date = new Date("June 19, 2026 00:00:00").getTime();
+setInterval(function() {
+    var now = new Date().getTime();
+    var diff = date - now;
+
+    var days = Math.floor(diff / (1000*60*60*24));
+    var hours = Math.floor((diff % (1000*60*60*24))/(1000*60*60));
+
+    document.getElementById("countdown").innerHTML =
+    days + " days " + hours + " hrs left";
+},1000);
+
+/* WhatsApp */
+function sendWhatsApp(){
+    window.open("https://wa.me/201024197200?text=Congratulations 🤍","_blank");
+}
+</script>
+
+</body>
+</html>
